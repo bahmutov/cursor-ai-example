@@ -16,6 +16,8 @@ This application has a modern look and feel and shows each task item in the List
 
 You can also see the tasks arranged by priority in the Kanban view that supports drag-and-drop
 
+![The Kanban view](./images/app-kanban.png)
+
 ## App features
 
 - Modern React + Redux + Vite bundler
