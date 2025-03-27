@@ -8,6 +8,13 @@ Original application forked from [johnobriendev/notionesque](https://github.com/
 
 Check out the online course [Cursor AI For Cypress Testing](https://cypress.tips/courses/cy-cursor)
 
+## Install and use
+
+- clone this repo to your local machine
+- install dependencies with `npm install`
+- start the application with `npm start`
+- open the url `localhost:5173` in your browser
+
 ## The list view
 
 This application has a modern look and feel and shows each task item in the List view
