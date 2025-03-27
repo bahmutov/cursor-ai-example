@@ -6,6 +6,8 @@
 
 Original application forked from [johnobriendev/notionesque](https://github.com/johnobriendev/notionesque).
 
+Check out the online course [Cursor AI For Cypress Testing](https://cypress.tips/courses/cy-cursor)
+
 ## The list view
 
 This application has a modern look and feel and shows each task item in the List view
