@@ -1,59 +1,53 @@
 //src/components/layout/Header.tsx
 
-import React from "react"
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import React from "react";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
   setViewMode,
   openTaskModal,
   setSearchTerm,
   setFilterStatus,
   setFilterPriority,
-} from "../../features/ui/uiSlice"
-import { ViewMode, TaskStatus, TaskPriority } from "../../types"
-import HistoryControls from "../common/HistoryControls"
+} from "../../features/ui/uiSlice";
+import { ViewMode, TaskStatus, TaskPriority } from "../../types";
+import HistoryControls from "../common/HistoryControls";
 
 const Header: React.FC = () => {
-  const dispatch = useAppDispatch()
-  const viewMode = useAppSelector(state => state.ui.viewMode)
-  const filterConfig = useAppSelector(state => state.ui.filterConfig)
+  const dispatch = useAppDispatch();
+  const viewMode = useAppSelector(state => state.ui.viewMode);
+  const filterConfig = useAppSelector(state => state.ui.filterConfig);
 
   // Handle view mode toggle
   const handleViewModeChange = (mode: ViewMode) => {
-    dispatch(setViewMode(mode))
-  }
+    dispatch(setViewMode(mode));
+  };
 
   // Handle opening the create task modal
   const handleCreateTask = () => {
-    dispatch(openTaskModal(null)) // null means we're creating a new task
-  }
+    dispatch(openTaskModal(null)); // null means we're creating a new task
+  };
 
   // Handle search input changes
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSearchTerm(e.target.value))
-  }
+    dispatch(setSearchTerm(e.target.value));
+  };
 
   // Handle status filter changes
-  const handleStatusFilterChange = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    dispatch(setFilterStatus(e.target.value as TaskStatus | "all"))
-  }
+  const handleStatusFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(setFilterStatus(e.target.value as TaskStatus | "all"));
+  };
 
   // Handle priority filter changes
-  const handlePriorityFilterChange = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    dispatch(setFilterPriority(e.target.value as TaskPriority | "all"))
-  }
+  const handlePriorityFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(setFilterPriority(e.target.value as TaskPriority | "all"));
+  };
 
   return (
     <header className="bg-white shadow">
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center">
-            <h1 className="text-3xl font-bold text-gray-900 mr-4">
-              Notionesque
-            </h1>
+            <h1 className="text-3xl font-bold text-gray-900 mr-4">Notionesque</h1>
             {/* Undo/Redo Controls */}
             <HistoryControls />
           </div>
@@ -136,7 +130,7 @@ const Header: React.FC = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

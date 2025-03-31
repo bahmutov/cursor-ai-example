@@ -1,17 +1,17 @@
 //src/app/store.ts
-import { configureStore } from "@reduxjs/toolkit"
-import { persistStore, persistReducer } from "redux-persist"
-import storage from "redux-persist/lib/storage"
-import tasksReducer from "../features/tasks/tasksSlice"
-import uiReducer from "../features/ui/uiSlice"
-import { clearHistoryMiddleware } from "./clearHistoryMiddleware"
+import { configureStore } from "@reduxjs/toolkit";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import tasksReducer from "../features/tasks/tasksSlice";
+import uiReducer from "../features/ui/uiSlice";
+import { clearHistoryMiddleware } from "./clearHistoryMiddleware";
 
 // Configuration for redux-persist with redux-undo
 const tasksPersistConfig = {
   key: "tasks",
   storage,
   whitelist: ["present"], // Only persist the present state for tasks with redux-undo
-}
+};
 
 // Create the store with our reducers
 export const store = configureStore({
@@ -26,17 +26,17 @@ export const store = configureStore({
         ignoredActions: ["persist/PERSIST", "persist/REHYDRATE"],
       },
     }).concat(clearHistoryMiddleware),
-})
+});
 
 // @ts-ignore
 if (window.Cypress) {
   // @ts-ignore
-  window.store = store
+  window.store = store;
 }
 
 // Create the persistor for the store
-export const persistor = persistStore(store)
+export const persistor = persistStore(store);
 
 // Export types for TypeScript
-export type AppStore = typeof store
-export type AppDispatch = typeof store.dispatch
+export type AppStore = typeof store;
+export type AppDispatch = typeof store.dispatch;

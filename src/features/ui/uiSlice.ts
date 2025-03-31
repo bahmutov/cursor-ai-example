@@ -1,6 +1,6 @@
 //src/features/ui/uiSlice.ts
 
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   ViewMode,
   SortField,
@@ -9,15 +9,15 @@ import {
   FilterConfig,
   TaskStatus,
   TaskPriority,
-} from "../../types"
+} from "../../types";
 
 // Define the state structure for the UI slice
 interface UiState {
-  viewMode: ViewMode
-  sortConfig: SortConfig
-  filterConfig: FilterConfig
-  isTaskModalOpen: boolean
-  editingTaskId: string | null
+  viewMode: ViewMode;
+  sortConfig: SortConfig;
+  filterConfig: FilterConfig;
+  isTaskModalOpen: boolean;
+  editingTaskId: string | null;
 }
 
 // Initial state when the application loads
@@ -34,7 +34,7 @@ const initialState: UiState = {
   },
   isTaskModalOpen: false,
   editingTaskId: null,
-}
+};
 
 // Create the slice with reducers
 export const uiSlice = createSlice({
@@ -43,55 +43,51 @@ export const uiSlice = createSlice({
   reducers: {
     // Toggle between list and kanban views
     setViewMode: (state, action: PayloadAction<ViewMode>) => {
-      state.viewMode = action.payload
+      state.viewMode = action.payload;
     },
 
     // Update the sort configuration
     setSortConfig: (state, action: PayloadAction<Partial<SortConfig>>) => {
       // If same field is clicked, toggle direction
-      if (
-        action.payload.field === state.sortConfig.field &&
-        !action.payload.direction
-      ) {
-        state.sortConfig.direction =
-          state.sortConfig.direction === "asc" ? "desc" : "asc"
+      if (action.payload.field === state.sortConfig.field && !action.payload.direction) {
+        state.sortConfig.direction = state.sortConfig.direction === "asc" ? "desc" : "asc";
       } else {
         // Otherwise, update with new config
         state.sortConfig = {
           ...state.sortConfig,
           ...action.payload,
-        }
+        };
       }
     },
 
     // Update status filter
     setFilterStatus: (state, action: PayloadAction<TaskStatus | "all">) => {
-      state.filterConfig.status = action.payload
+      state.filterConfig.status = action.payload;
     },
 
     // Update priority filter
     setFilterPriority: (state, action: PayloadAction<TaskPriority | "all">) => {
-      state.filterConfig.priority = action.payload
+      state.filterConfig.priority = action.payload;
     },
 
     // Update search term
     setSearchTerm: (state, action: PayloadAction<string>) => {
-      state.filterConfig.searchTerm = action.payload
+      state.filterConfig.searchTerm = action.payload;
     },
 
     // Open task creation/edit modal
     openTaskModal: (state, action: PayloadAction<string | null>) => {
-      state.isTaskModalOpen = true
-      state.editingTaskId = action.payload // null for new task, task ID for editing
+      state.isTaskModalOpen = true;
+      state.editingTaskId = action.payload; // null for new task, task ID for editing
     },
 
     // Close task modal
     closeTaskModal: state => {
-      state.isTaskModalOpen = false
-      state.editingTaskId = null
+      state.isTaskModalOpen = false;
+      state.editingTaskId = null;
     },
   },
-})
+});
 
 // Export the actions
 export const {
@@ -102,7 +98,7 @@ export const {
   setSearchTerm,
   openTaskModal,
   closeTaskModal,
-} = uiSlice.actions
+} = uiSlice.actions;
 
 // Export the reducer
-export default uiSlice.reducer
+export default uiSlice.reducer;
