@@ -16,7 +16,8 @@
     "format:check": "prettier --check .",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "test:e2e": "start-server-and-test dev http://localhost:5173 cypress:run"
+    "test:e2e": "start-server-and-test dev http://localhost:5173 cypress:run",
+    "test:open": "start-server-and-test dev http://localhost:5173 cypress:open"
   },
   "dependencies": {
     "@hello-pangea/dnd": "^18.0.1",
