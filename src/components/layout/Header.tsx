@@ -56,6 +56,7 @@ const Header: React.FC = () => {
             <button
               onClick={handleCreateTask}
               className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+              data-cy="create-task-button"
             >
               Create Task
             </button>
@@ -69,6 +70,7 @@ const Header: React.FC = () => {
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
                 data-active={viewMode === "list"}
+                data-cy="list-view-button"
               >
                 List
               </button>
@@ -80,6 +82,7 @@ const Header: React.FC = () => {
                     : "text-gray-600 hover:bg-gray-100"
                 }`}
                 data-active={viewMode === "kanban"}
+                data-cy="kanban-view-button"
               >
                 Kanban
               </button>

@@ -192,6 +192,7 @@ const ListView: React.FC = () => {
           <button
             onClick={handleBulkDelete}
             className="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
+            data-cy="delete-selected-button"
           >
             Delete Selected
           </button>
@@ -300,12 +301,14 @@ const ListView: React.FC = () => {
                   <button
                     onClick={() => handleEditTask(task)}
                     className="text-indigo-600 hover:text-indigo-900 mr-4"
+                    data-cy="edit-task-button"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDeleteTask(task.id)}
                     className="text-red-600 hover:text-red-900"
+                    data-cy="delete-task-button"
                   >
                     Delete
                   </button>
@@ -341,6 +344,7 @@ const ListView: React.FC = () => {
                   ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                   : "bg-white text-gray-700 hover:bg-gray-50"
               }`}
+              data-cy="pagination-prev-button"
             >
               Previous
             </button>
@@ -355,6 +359,7 @@ const ListView: React.FC = () => {
                   ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                   : "bg-white text-gray-700 hover:bg-gray-50"
               }`}
+              data-cy="pagination-next-button"
             >
               Next
             </button>
@@ -388,6 +393,7 @@ const ListView: React.FC = () => {
                       ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                       : "bg-white text-gray-500 hover:bg-gray-50"
                   }`}
+                  data-cy="pagination-first-button"
                 >
                   First
                 </button>
@@ -399,6 +405,7 @@ const ListView: React.FC = () => {
                       ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                       : "bg-white text-gray-500 hover:bg-gray-50"
                   }`}
+                  data-cy="pagination-prev-button"
                 >
                   Prev
                 </button>
@@ -427,6 +434,7 @@ const ListView: React.FC = () => {
                           ? "z-10 bg-blue-50 border-blue-500 text-blue-600"
                           : "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
                       }`}
+                      data-cy={`pagination-page-${pageNum}-button`}
                     >
                       {pageNum}
                     </button>
@@ -441,6 +449,7 @@ const ListView: React.FC = () => {
                       ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                       : "bg-white text-gray-500 hover:bg-gray-50"
                   }`}
+                  data-cy="pagination-next-button"
                 >
                   Next
                 </button>
@@ -452,6 +461,7 @@ const ListView: React.FC = () => {
                       ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                       : "bg-white text-gray-500 hover:bg-gray-50"
                   }`}
+                  data-cy="pagination-last-button"
                 >
                   Last
                 </button>

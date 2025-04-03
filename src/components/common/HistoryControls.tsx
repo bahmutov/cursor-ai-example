@@ -41,7 +41,7 @@ const HistoryControls: React.FC = () => {
             : "bg-gray-50 text-gray-400 cursor-not-allowed"
         }`}
         title={`Undo (${pastCount} states in history)`}
-        data-testid="undo-button"
+        data-cy="undo-button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ const HistoryControls: React.FC = () => {
             : "bg-gray-50 text-gray-400 cursor-not-allowed"
         }`}
         title={`Redo (${futureCount} states in future)`}
-        data-testid="redo-button"
+        data-cy="redo-button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

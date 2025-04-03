@@ -141,12 +141,14 @@ const KanbanView: React.FC = () => {
           <button
             onClick={() => handleEditTask(task.id)}
             className="text-indigo-600 hover:text-indigo-900 text-sm"
+            data-cy="edit-task-button"
           >
             Edit
           </button>
           <button
             onClick={() => handleDeleteTask(task.id)}
             className="text-red-600 hover:text-red-900 text-sm"
+            data-cy="delete-task-button"
           >
             Delete
           </button>
