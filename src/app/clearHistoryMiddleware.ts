@@ -17,9 +17,9 @@ export const clearHistoryMiddleware: Middleware = store => next => action => {
     action.type === "persist/REHYDRATE"
   ) {
     // Clear the history after a short delay to ensure rehydration is complete
-    setTimeout(() => {
-      store.dispatch(ActionCreators.clearHistory());
-    }, 100);
+    // setTimeout(() => {
+    //   store.dispatch(ActionCreators.clearHistory());
+    // }, 100);
   }
 
   return result;

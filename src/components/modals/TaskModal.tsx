@@ -136,6 +136,7 @@ const TaskModal: React.FC = () => {
               onChange={e => setTitle(e.target.value)}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              data-cy="task-title"
             />
           </div>
 
@@ -148,6 +149,7 @@ const TaskModal: React.FC = () => {
               onChange={e => setDescription(e.target.value)}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               rows={3}
+              data-cy="task-description"
             />
           </div>
 
@@ -159,7 +161,7 @@ const TaskModal: React.FC = () => {
                 value={status}
                 onChange={e => setStatus(e.target.value as TaskStatus)}
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                data-cy="status-select"
+                data-cy="task-status"
               >
                 <option value="not started">Not Started</option>
                 <option value="in progress">In Progress</option>
@@ -173,7 +175,7 @@ const TaskModal: React.FC = () => {
                 value={priority}
                 onChange={e => setPriority(e.target.value as TaskPriority)}
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                data-cy="priority-select"
+                data-cy="task-priority"
               >
                 <option value="none">None</option>
                 <option value="low">Low</option>
