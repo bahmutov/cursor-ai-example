@@ -11,7 +11,7 @@ VERY IMPORTANT: always make a new branch for each feature.
 ## Git rules
 
 - remember the current branch name before creating the new branch
-- always use GitHub CLI "gh" to create branches and pull requests using `gh pr create <pr name>`
+- always use GitHub CLI "gh" to create branches and pull requests using `gh pr create <pr name> --base <original branch name>`
 - always follow semantic commit convention when naming commits
 - finish the feature by adding a commit
 - open a GitHub pull request between the current branch and its base / parent branch
