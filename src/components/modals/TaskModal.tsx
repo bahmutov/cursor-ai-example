@@ -136,6 +136,7 @@ const TaskModal: React.FC = () => {
               onChange={e => setTitle(e.target.value)}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              data-cy="title-input"
             />
           </div>
 
@@ -148,6 +149,7 @@ const TaskModal: React.FC = () => {
               onChange={e => setDescription(e.target.value)}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               rows={3}
+              data-cy="description-input"
             />
           </div>
 

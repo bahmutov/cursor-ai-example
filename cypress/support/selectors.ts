@@ -5,8 +5,8 @@ export const selectors = {
   },
   TaskForm: {
     container: '[data-cy="task-form"]',
-    titleInput: 'input[name="title"]',
-    descriptionInput: 'textarea[name="description"]',
+    titleInput: '[data-cy="title-input"]',
+    descriptionInput: '[data-cy="description-input"]',
     statusSelect: '[data-cy="status-select"]',
     prioritySelect: '[data-cy="priority-select"]',
     submitButton: '[data-cy="submit-task-button"]',
