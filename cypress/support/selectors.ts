@@ -3,6 +3,11 @@ export const selectors = {
     container: '[data-cy="list-view"]',
     taskRow: '[data-cy="task-row"]',
   },
+  KanbanView: {
+    container: '[data-cy="kanban-view"]',
+    taskCard: '[data-cy="task-card"]',
+    toggleButton: '[data-cy="kanban-view-button"]',
+  },
   TaskForm: {
     container: '[data-cy="task-form"]',
     titleInput: '[data-cy="title-input"]',
