@@ -1,0 +1,42 @@
+[
+  {
+    "id": "task-1",
+    "title": "Implement user authentication",
+    "description": "Add login and registration functionality",
+    "status": "in progress",
+    "priority": "high",
+    "createdAt": "2024-03-20T10:00:00Z",
+    "updatedAt": "2024-03-20T10:00:00Z",
+    "customFields": {}
+  },
+  {
+    "id": "task-2",
+    "title": "Fix navigation bug",
+    "description": "Menu items not highlighting correctly",
+    "status": "not started",
+    "priority": "medium",
+    "createdAt": "2024-03-19T15:30:00Z",
+    "updatedAt": "2024-03-19T15:30:00Z",
+    "customFields": {}
+  },
+  {
+    "id": "task-3",
+    "title": "Update documentation",
+    "description": "Add new API endpoints to docs",
+    "status": "completed",
+    "priority": "low",
+    "createdAt": "2024-03-18T09:15:00Z",
+    "updatedAt": "2024-03-18T09:15:00Z",
+    "customFields": {}
+  },
+  {
+    "id": "task-4",
+    "title": "Optimize database queries",
+    "description": "Improve performance of task filtering",
+    "status": "in progress",
+    "priority": "urgent",
+    "createdAt": "2024-03-17T14:20:00Z",
+    "updatedAt": "2024-03-17T14:20:00Z",
+    "customFields": {}
+  }
+]
