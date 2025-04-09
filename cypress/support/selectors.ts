@@ -2,6 +2,7 @@ export const selectors = {
   ListView: {
     container: '[data-cy="list-view"]',
     taskRow: '[data-cy="task-row"]',
+    searchInput: '[data-cy="task-search-input"]',
   },
   KanbanView: {
     container: '[data-cy="kanban-view"]',

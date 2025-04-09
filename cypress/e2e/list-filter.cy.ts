@@ -5,6 +5,7 @@
 // confirm the filtered list of tasks is shown
 
 import { Task } from "../../src/types";
+import { selectors } from "../support/selectors";
 
 describe("List Filter", () => {
   beforeEach(() => {
@@ -17,27 +18,27 @@ describe("List Filter", () => {
     cy.fixture("4-tasks.json").then((tasks: Task[]) => {
       // Create each task in the application
       tasks.forEach(task => {
-        cy.get("[data-cy=add-task-button]").click();
-        cy.get("[data-cy=task-title-input]").type(task.title);
-        cy.get("[data-cy=task-description-input]").type(task.description);
-        cy.get("[data-cy=task-status-select]").select(task.status);
-        cy.get("[data-cy=task-priority-select]").select(task.priority);
-        cy.get("[data-cy=save-task-button]").click();
+        cy.get(selectors.CreateTaskButton.button).click();
+        cy.get(selectors.TaskForm.titleInput).type(task.title);
+        cy.get(selectors.TaskForm.descriptionInput).type(task.description);
+        cy.get(selectors.TaskForm.statusSelect).select(task.status);
+        cy.get(selectors.TaskForm.prioritySelect).select(task.priority);
+        cy.get(selectors.TaskForm.submitButton).click();
       });
 
       // Verify all tasks are visible in the list
       tasks.forEach(task => {
-        cy.get("[data-cy=task-list]").should("contain", task.title);
+        cy.get(selectors.ListView.container).should("contain", task.title);
       });
 
       // Filter tasks by search term "database"
-      cy.get("[data-cy=task-search-input]").type("database");
+      cy.get(selectors.ListView.searchInput).type("database");
 
       // Verify only the matching task is visible
-      cy.get("[data-cy=task-list]").should("contain", "Optimize database queries");
-      cy.get("[data-cy=task-list]").should("not.contain", "Implement user authentication");
-      cy.get("[data-cy=task-list]").should("not.contain", "Fix navigation bug");
-      cy.get("[data-cy=task-list]").should("not.contain", "Update documentation");
+      cy.get(selectors.ListView.container).should("contain", "Optimize database queries");
+      cy.get(selectors.ListView.container).should("not.contain", "Implement user authentication");
+      cy.get(selectors.ListView.container).should("not.contain", "Fix navigation bug");
+      cy.get(selectors.ListView.container).should("not.contain", "Update documentation");
     });
   });
 });
