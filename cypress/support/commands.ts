@@ -1,3 +1,5 @@
+import "cypress-map/commands";
+
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
