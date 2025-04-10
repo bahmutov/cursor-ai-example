@@ -3,6 +3,7 @@ export const selectors = {
     container: '[data-cy="list-view"]',
     taskRow: '[data-cy="task-row"]',
     searchInput: '[data-cy="search-input"]',
+    taskTitle: '[data-cy="task-title"]',
   },
   KanbanView: {
     container: '[data-cy="kanban-view"]',

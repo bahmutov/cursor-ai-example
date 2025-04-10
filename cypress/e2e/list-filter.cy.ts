@@ -20,19 +20,23 @@ describe("List Filter", () => {
         cy.get(selectors.TaskForm.submitButton).click();
       });
 
-      // Verify all tasks are visible in the list
-      tasks.forEach(task => {
-        cy.get(selectors.ListView.container).should("contain", task.title);
-      });
+      // Verify all tasks are visible in the list in order
+      cy.get(selectors.ListView.container)
+        .find(selectors.ListView.taskTitle)
+        .should("read", [
+          "Optimize database queries",
+          "Update documentation",
+          "Fix navigation bug",
+          "Implement user authentication",
+        ]);
 
       // Filter tasks by search term "database"
       cy.get(selectors.ListView.searchInput).type("database");
 
       // Verify only the matching task is visible
-      cy.get(selectors.ListView.container).should("contain", "Optimize database queries");
-      cy.get(selectors.ListView.container).should("not.contain", "Implement user authentication");
-      cy.get(selectors.ListView.container).should("not.contain", "Fix navigation bug");
-      cy.get(selectors.ListView.container).should("not.contain", "Update documentation");
+      cy.get(selectors.ListView.container)
+        .find(selectors.ListView.taskTitle)
+        .should("read", ["Optimize database queries"]);
     });
   });
 });
