@@ -4,6 +4,7 @@ export const selectors = {
     taskRow: '[data-cy="task-row"]',
     searchInput: '[data-cy="search-input"]',
     taskTitle: '[data-cy="task-title"]',
+    zeroTasks: '[data-cy="zero-tasks"]',
   },
   KanbanView: {
     container: '[data-cy="kanban-view"]',

@@ -7,6 +7,7 @@ describe("List Filter", () => {
     cy.visit("/");
     // we start with zero task rows
     cy.get(selectors.ListView.taskRow).should("have.length", 0);
+    cy.get(selectors.ListView.zeroTasks).should("be.visible");
   });
 
   it("should filter tasks by search term", () => {
