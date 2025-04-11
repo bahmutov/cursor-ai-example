@@ -5,19 +5,23 @@ describe("List Filter", () => {
   beforeEach(() => {
     // Reset the application state before each test
     cy.visit("/");
+    // we start with zero task rows
+    cy.get(selectors.ListView.taskRow).should("have.length", 0);
   });
 
   it("should filter tasks by search term", () => {
     // Load the tasks from the fixture
     cy.fixture("4-tasks.json").then((tasks: Task[]) => {
       // Create each task in the application
-      tasks.forEach(task => {
-        cy.get(selectors.CreateTaskButton.button).click();
-        cy.get(selectors.TaskForm.titleInput).type(task.title);
-        cy.get(selectors.TaskForm.descriptionInput).type(task.description);
-        cy.get(selectors.TaskForm.statusSelect).select(task.status);
-        cy.get(selectors.TaskForm.prioritySelect).select(task.priority);
-        cy.get(selectors.TaskForm.submitButton).click();
+      tasks.forEach((task, k) => {
+        cy.createTask({
+          title: task.title,
+          description: task.description,
+          status: task.status,
+          priority: task.priority,
+          customFields: task.customFields,
+        });
+        cy.get(selectors.ListView.taskRow).should("have.length", k + 1);
       });
 
       // Verify all tasks are visible in the list in order
