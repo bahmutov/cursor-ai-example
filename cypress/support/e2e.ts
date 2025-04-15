@@ -2,3 +2,4 @@
 import "./commands";
 import "cypress-map";
 import "@cypress/code-coverage/support";
+import "cypress-plugin-steps";
