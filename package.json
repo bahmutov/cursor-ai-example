@@ -17,7 +17,9 @@
     "cypress:open": "cypress open --e2e",
     "cypress:run": "cypress run",
     "test:e2e": "start-server-and-test dev http://localhost:5173 cypress:run",
-    "test:open": "start-server-and-test dev http://localhost:5173 cypress:open"
+    "test:open": "start-server-and-test dev http://localhost:5173 cypress:open",
+    "clean": "rm -rf .nyc_output coverage",
+    "pretest:e2e": "npm run clean"
   },
   "dependencies": {
     "@hello-pangea/dnd": "^18.0.1",
