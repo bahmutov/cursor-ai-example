@@ -1,4 +1,5 @@
 import { defineConfig } from "cypress";
+import codeCoverageTask from "@cypress/code-coverage/task";
 
 export default defineConfig({
   defaultBrowser: "electron",
@@ -9,6 +10,7 @@ export default defineConfig({
     video: false,
     screenshotOnRunFailure: false,
     setupNodeEvents(on, config) {
+      codeCoverageTask(on, config);
       return config;
     },
   },

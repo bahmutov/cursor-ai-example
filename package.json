@@ -17,7 +17,8 @@
     "cypress:open": "cypress open --e2e",
     "cypress:run": "cypress run",
     "test:e2e": "start-server-and-test dev http://localhost:5173 cypress:run",
-    "test:open": "start-server-and-test dev http://localhost:5173 cypress:open"
+    "test:open": "start-server-and-test dev http://localhost:5173 cypress:open",
+    "test:coverage": "start-server-and-test dev http://localhost:5173 'cypress run --env coverage=true'"
   },
   "dependencies": {
     "@hello-pangea/dnd": "^18.0.1",
@@ -32,6 +33,7 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.14.0",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/node": "^22.13.13",
     "@types/react": "^18.2.47",
