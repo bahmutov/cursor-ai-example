@@ -32,6 +32,7 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.14.0",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/node": "^22.13.13",
     "@types/react": "^18.2.47",
