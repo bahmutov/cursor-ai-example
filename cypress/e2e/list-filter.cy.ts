@@ -5,13 +5,13 @@ describe("List Filter", () => {
   beforeEach(() => {
     // Reset the application state before each test
     cy.visit("/");
-    // we start with zero task rows
+    cy.step("we start with zero task rows");
     cy.get(selectors.ListView.taskRow).should("have.length", 0);
     cy.get(selectors.ListView.zeroTasks).should("be.visible");
   });
 
   it("should filter tasks by search term", () => {
-    // Load the tasks from the fixture
+    cy.step("Load the tasks from the fixture");
     cy.fixture("4-tasks.json").then((tasks: Task[]) => {
       // Create each task in the application
       tasks.forEach((task, k) => {
@@ -25,7 +25,7 @@ describe("List Filter", () => {
         cy.get(selectors.ListView.taskRow).should("have.length", k + 1);
       });
 
-      // Verify all tasks are visible in the list in order
+      cy.step("Verify all tasks are visible in the list in order");
       cy.get(selectors.ListView.container)
         .find(selectors.ListView.taskTitle)
         .should("read", [
@@ -35,10 +35,10 @@ describe("List Filter", () => {
           "Implement user authentication",
         ]);
 
-      // Filter tasks by search term "database"
+      cy.step("Filter tasks by search term 'database'");
       cy.get(selectors.ListView.searchInput).type("database");
 
-      // Verify only the matching task is visible
+      cy.step("Verify only the matching task is visible");
       cy.get(selectors.ListView.container)
         .find(selectors.ListView.taskTitle)
         .should("read", ["Optimize database queries"]);
