@@ -9,7 +9,6 @@ export default defineConfig({
     video: false,
     screenshotOnRunFailure: false,
     setupNodeEvents(on, config) {
-      require("@cypress/code-coverage/task")(on, config);
       return config;
     },
   },
