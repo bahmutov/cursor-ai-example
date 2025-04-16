@@ -16,6 +16,10 @@ export const selectors = {
     container: '[data-cy="kanban-view"]',
     taskCard: '[data-cy="task-card"]',
     toggleButton: '[data-cy="kanban-view-button"]',
+    column: '[data-cy="kanban-column"]',
+    columnLow: '[data-column="priority-low"]',
+    columnMedium: '[data-column="priority-medium"]',
+    columnHigh: '[data-column="priority-high"]',
   },
   TaskForm: {
     container: '[data-cy="task-form"]',
