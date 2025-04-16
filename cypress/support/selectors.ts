@@ -5,6 +5,8 @@ export const selectors = {
     searchInput: '[data-cy="search-input"]',
     taskTitle: '[data-cy="task-title"]',
     zeroTasks: '[data-cy="zero-tasks"]',
+    selectAllCheckbox: '[data-cy="select-all"]',
+    deleteButton: '[data-cy="delete-selected-button"]',
   },
   KanbanView: {
     container: '[data-cy="kanban-view"]',
