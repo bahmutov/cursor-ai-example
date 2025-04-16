@@ -17,7 +17,7 @@ it("Changes the task priority by dragging the card", () => {
     .contains(selectors.KanbanView.taskCard, "Test task")
     .should("be.visible");
 
-  // drag the card to the "In Progress" column
+  // drag the card to the "Medium" column
   cy.dragAndDrop(
     selectors.KanbanView.taskCard + ":nth-child(1)",
     selectors.KanbanView.columnMedium
