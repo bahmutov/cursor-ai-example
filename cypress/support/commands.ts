@@ -35,6 +35,14 @@ declare global {
   namespace Cypress {
     interface Chainable {
       createTask(task: CreateTaskInput): Chainable<void>;
+      /**
+       * Simple drag and drop command. Implemented using cypress-real-events plugin.
+       * @param source - The source element to drag (selector)
+       * @param target - The target element to drop (selector)
+       * @example
+       * cy.dragAndDrop(selectors.TaskCard.locator, selectors.TaskBoard.locator);
+       */
+      dragAndDrop(source: string, target: string): Chainable<void>;
     }
   }
 }
@@ -46,4 +54,12 @@ Cypress.Commands.add("createTask", (task: CreateTaskInput) => {
   cy.get(selectors.TaskForm.statusSelect).select(task.status);
   cy.get(selectors.TaskForm.prioritySelect).select(task.priority);
   cy.get(selectors.TaskForm.submitButton).click();
+});
+
+Cypress.Commands.add("dragAndDrop", (source: string, target: string) => {
+  cy.get(source)
+    .realMouseDown({ button: "left", position: "center" })
+    .realMouseMove(0, 10, { position: "center" })
+    .wait(200);
+  cy.get(target).realMouseMove(0, 0, { position: "center" }).realMouseUp();
 });
