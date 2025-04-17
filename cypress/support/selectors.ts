@@ -11,6 +11,8 @@ export const selectors = {
     selectAllCheckbox: '[data-cy="select-all"]',
     deleteButton: '[data-cy="delete-selected-button"]',
     editButton: '[data-cy="edit-task-button"]',
+    taskTitleHeader: '[data-cy="task-title-header"]',
+    taskRows: '[data-cy="task-row"]',
   },
   KanbanView: {
     container: '[data-cy="kanban-view"]',
