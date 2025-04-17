@@ -1,0 +1,15 @@
+---
+description: 
+globs: cypress/e2e/**.cy.ts
+alwaysApply: false
+---
+# Cypress test rules
+
+- follow the patterns in the existing Cypress spec files
+- always use the global test selectors file [selectors.ts](mdc:cypress/support/selectors.ts)
+- if the frontend element lacks `data-cy` attribute, add it and add a constant in the [selectors.ts](mdc:cypress/support/selectors.ts) file
+- use `cy.createTask` command to create tasks
+- use `should read` assertion to check the text contents like this
+```js
+cy.get('.li').should('read', ['item 1', 'item 2', 'item 3'])
+```

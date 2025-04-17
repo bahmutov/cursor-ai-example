@@ -1,66 +1,64 @@
 //src/components/modals/TaskModal.tsx
-import React, { useState, useEffect } from "react"
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { closeTaskModal } from "../../features/ui/uiSlice"
-import { addTask, updateTask } from "../../features/tasks/tasksSlice"
-import { Task, TaskStatus, TaskPriority } from "../../types"
+import React, { useState, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { closeTaskModal } from "../../features/ui/uiSlice";
+import { addTask, updateTask } from "../../features/tasks/tasksSlice";
+import { Task, TaskStatus, TaskPriority } from "../../types";
 
 const TaskModal: React.FC = () => {
-  const dispatch = useAppDispatch()
-  const isOpen = useAppSelector(state => state.ui.isTaskModalOpen)
-  const editingTaskId = useAppSelector(state => state.ui.editingTaskId)
-  const tasks = useAppSelector(state => state.tasks.present.items as Task[])
+  const dispatch = useAppDispatch();
+  const isOpen = useAppSelector(state => state.ui.isTaskModalOpen);
+  const editingTaskId = useAppSelector(state => state.ui.editingTaskId);
+  const tasks = useAppSelector(state => state.tasks.present.items as Task[]);
 
   // Find the task being edited, if any
-  const taskToEdit = editingTaskId
-    ? tasks.find(task => task.id === editingTaskId)
-    : null
+  const taskToEdit = editingTaskId ? tasks.find(task => task.id === editingTaskId) : null;
 
   // Form state
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [status, setStatus] = useState<TaskStatus>("not started")
-  const [priority, setPriority] = useState<TaskPriority>("none")
-  const [customFields, setCustomFields] = useState<Record<string, string>>({})
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState<TaskStatus>("not started");
+  const [priority, setPriority] = useState<TaskPriority>("none");
+  const [customFields, setCustomFields] = useState<Record<string, string>>({});
 
   // For adding custom fields
-  const [showCustomFields, setShowCustomFields] = useState(false)
-  const [newFieldName, setNewFieldName] = useState("")
-  const [newFieldValue, setNewFieldValue] = useState("")
+  const [showCustomFields, setShowCustomFields] = useState(false);
+  const [newFieldName, setNewFieldName] = useState("");
+  const [newFieldValue, setNewFieldValue] = useState("");
 
   // Reset form when modal opens/closes or editingTaskId changes
   useEffect(() => {
     if (isOpen) {
       if (taskToEdit) {
         // Editing existing task - populate form
-        setTitle(taskToEdit.title)
-        setDescription(taskToEdit.description)
-        setStatus(taskToEdit.status)
-        setPriority(taskToEdit.priority)
-        setCustomFields(taskToEdit.customFields as Record<string, string>)
-        setShowCustomFields(Object.keys(taskToEdit.customFields).length > 0)
+        setTitle(taskToEdit.title);
+        setDescription(taskToEdit.description);
+        setStatus(taskToEdit.status);
+        setPriority(taskToEdit.priority);
+        setCustomFields(taskToEdit.customFields as Record<string, string>);
+        setShowCustomFields(Object.keys(taskToEdit.customFields).length > 0);
       } else {
         // Creating new task - reset form
-        setTitle("")
-        setDescription("")
-        setStatus("not started")
-        setPriority("none")
-        setCustomFields({})
-        setShowCustomFields(false)
+        setTitle("");
+        setDescription("");
+        setStatus("not started");
+        setPriority("none");
+        setCustomFields({});
+        setShowCustomFields(false);
       }
     }
-  }, [isOpen, taskToEdit])
+  }, [isOpen, taskToEdit]);
 
   // Close the modal
   const handleClose = () => {
-    dispatch(closeTaskModal())
-  }
+    dispatch(closeTaskModal());
+  };
 
   // Submit the form
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (!title.trim()) return // Validate title
+    if (!title.trim()) return; // Validate title
 
     if (taskToEdit) {
       // Update existing task
@@ -74,8 +72,8 @@ const TaskModal: React.FC = () => {
             priority,
             customFields,
           },
-        }),
-      )
+        })
+      );
     } else {
       // Create new task
       dispatch(
@@ -85,13 +83,13 @@ const TaskModal: React.FC = () => {
           status,
           priority,
           customFields,
-        }),
-      )
+        })
+      );
     }
 
     // Close the modal
-    handleClose()
-  }
+    handleClose();
+  };
 
   // Add a custom field
   const handleAddCustomField = () => {
@@ -99,42 +97,38 @@ const TaskModal: React.FC = () => {
       setCustomFields(prev => ({
         ...prev,
         [newFieldName.trim()]: newFieldValue.trim(),
-      }))
-      setNewFieldName("")
-      setNewFieldValue("")
+      }));
+      setNewFieldName("");
+      setNewFieldValue("");
     }
-  }
+  };
 
   // Remove a custom field
   const handleRemoveCustomField = (fieldName: string) => {
     setCustomFields(prev => {
-      const updated = { ...prev }
-      delete updated[fieldName]
-      return updated
-    })
-  }
+      const updated = { ...prev };
+      delete updated[fieldName];
+      return updated;
+    });
+  };
 
   // Toggle custom fields visibility
   const toggleCustomFields = () => {
-    setShowCustomFields(!showCustomFields)
-  }
+    setShowCustomFields(!showCustomFields);
+  };
 
   // If modal is closed, don't render anything
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
-        <h2 className="text-xl font-bold mb-4">
-          {taskToEdit ? "Edit Task" : "Create New Task"}
-        </h2>
+        <h2 className="text-xl font-bold mb-4">{taskToEdit ? "Edit Task" : "Create New Task"}</h2>
 
         <form onSubmit={handleSubmit} data-cy="task-form">
           {/* Task Title */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Title *
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Title *</label>
             <input
               type="text"
               value={title}
@@ -142,29 +136,27 @@ const TaskModal: React.FC = () => {
               onChange={e => setTitle(e.target.value)}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              data-cy="title-input"
             />
           </div>
 
           {/* Task Description */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Description
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
             <textarea
               value={description}
               name="description"
               onChange={e => setDescription(e.target.value)}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               rows={3}
+              data-cy="description-input"
             />
           </div>
 
           {/* Status and Priority */}
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Status
-              </label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
               <select
                 value={status}
                 onChange={e => setStatus(e.target.value as TaskStatus)}
@@ -178,9 +170,7 @@ const TaskModal: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Priority
-              </label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Priority</label>
               <select
                 value={priority}
                 onChange={e => setPriority(e.target.value as TaskPriority)}
@@ -206,8 +196,7 @@ const TaskModal: React.FC = () => {
             >
               <span className="font-medium text-gray-700">
                 Custom Fields{" "}
-                {Object.keys(customFields).length > 0 &&
-                  `(${Object.keys(customFields).length})`}
+                {Object.keys(customFields).length > 0 && `(${Object.keys(customFields).length})`}
               </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -242,10 +231,7 @@ const TaskModal: React.FC = () => {
                           >
                             {name}
                           </span>
-                          <span
-                            className="text-gray-600 truncate"
-                            data-cy="custom-field-value"
-                          >
+                          <span className="text-gray-600 truncate" data-cy="custom-field-value">
                             {value}
                           </span>
                         </div>
@@ -316,12 +302,14 @@ const TaskModal: React.FC = () => {
               type="button"
               onClick={handleClose}
               className="px-4 py-2 border rounded-md hover:bg-gray-50 transition-colors"
+              data-cy="cancel-task-button"
             >
               Cancel
             </button>
             <button
               type="submit"
               className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+              data-cy="submit-task-button"
             >
               {taskToEdit ? "Update" : "Create"}
             </button>
@@ -329,7 +317,7 @@ const TaskModal: React.FC = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TaskModal
+export default TaskModal;

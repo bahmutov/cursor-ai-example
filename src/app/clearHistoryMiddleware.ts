@@ -1,11 +1,11 @@
 //src/app/clearHistoryMiddleware.ts
-import { Middleware } from "@reduxjs/toolkit"
-import { ActionCreators } from "redux-undo"
+import { Middleware } from "@reduxjs/toolkit";
+import { ActionCreators } from "redux-undo";
 
 // Middleware to clear history after rehydration
 export const clearHistoryMiddleware: Middleware = store => next => action => {
   // Execute the action first
-  const result = next(action)
+  const result = next(action);
 
   // console.log(action)
 
@@ -18,9 +18,9 @@ export const clearHistoryMiddleware: Middleware = store => next => action => {
   ) {
     // Clear the history after a short delay to ensure rehydration is complete
     setTimeout(() => {
-      store.dispatch(ActionCreators.clearHistory())
-    }, 100)
+      store.dispatch(ActionCreators.clearHistory());
+    }, 100);
   }
 
-  return result
-}
+  return result;
+};

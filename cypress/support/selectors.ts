@@ -1,0 +1,41 @@
+export const selectors = {
+  ListView: {
+    container: '[data-cy="list-view"]',
+    taskRow: '[data-cy="task-row"]',
+    searchInput: '[data-cy="search-input"]',
+    taskTitle: '[data-cy="task-title"]',
+    taskTitleHeader: '[data-cy="task-title-header"]',
+    taskDescription: '[data-cy="task-description"]',
+    taskStatus: '[data-cy="task-status"]',
+    taskStatusHeader: '[data-cy="task-status-header"]',
+    taskPriority: '[data-cy="task-priority"]',
+    taskPriorityHeader: '[data-cy="task-priority-header"]',
+    zeroTasks: '[data-cy="zero-tasks"]',
+    selectAllCheckbox: '[data-cy="select-all"]',
+    deleteButton: '[data-cy="delete-selected-button"]',
+    editButton: '[data-cy="edit-task-button"]',
+  },
+  KanbanView: {
+    container: '[data-cy="kanban-view"]',
+    taskCard: '[data-cy="task-card"]',
+    toggleButton: '[data-cy="kanban-view-button"]',
+    column: '[data-cy="kanban-column"]',
+    columnLow: '[data-column="priority-low"]',
+    columnMedium: '[data-column="priority-medium"]',
+    columnHigh: '[data-column="priority-high"]',
+  },
+  TaskForm: {
+    container: '[data-cy="task-form"]',
+    titleInput: '[data-cy="title-input"]',
+    descriptionInput: '[data-cy="description-input"]',
+    statusSelect: '[data-cy="status-select"]',
+    prioritySelect: '[data-cy="priority-select"]',
+    submitButton: '[data-cy="submit-task-button"]',
+  },
+  CreateTaskButton: {
+    button: '[data-cy="create-task-button"]',
+  },
+  DeleteTaskButton: {
+    button: '[data-cy="delete-task-button"]',
+  },
+} as const;
