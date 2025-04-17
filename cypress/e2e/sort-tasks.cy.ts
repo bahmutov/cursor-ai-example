@@ -4,19 +4,19 @@ describe("Sort tasks", () => {
   beforeEach(() => {
     // visit the app
     cy.visit("/");
-    // create 3 tasks with different titles
+    // create 3 tasks with different titles and priorities
     // task B, task A, task C
     cy.createTask({
       title: "Task B",
       description: "Task B description",
       status: "not started",
-      priority: "medium",
+      priority: "high",
     });
     cy.createTask({
       title: "Task A",
       description: "Task A description",
       status: "in progress",
-      priority: "medium",
+      priority: "low",
     });
     cy.createTask({
       title: "Task C",
@@ -60,5 +60,18 @@ describe("Sort tasks", () => {
       "in progress",
       "not started",
     ]);
+  });
+
+  it("sorts by task priority", () => {
+    // click on the priority column
+    cy.get(selectors.ListView.taskPriorityHeader).click();
+    cy.get(selectors.ListView.taskPriorityHeader).should("have.text", "Priority ↓");
+    // confirm the task priorities are sorted alphabetically
+    cy.get(selectors.ListView.taskPriority).should("read", ["high", "medium", "low"]);
+    // click the priority column again
+    cy.get(selectors.ListView.taskPriorityHeader).click();
+    cy.get(selectors.ListView.taskPriorityHeader).should("have.text", "Priority ↑");
+    // confirm the task priorities are sorted alphabetically in reverse
+    cy.get(selectors.ListView.taskPriority).should("read", ["low", "medium", "high"]);
   });
 });
