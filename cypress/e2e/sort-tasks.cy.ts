@@ -15,13 +15,13 @@ describe("Sort tasks", () => {
     cy.createTask({
       title: "Task A",
       description: "Task A description",
-      status: "not started",
+      status: "in progress",
       priority: "medium",
     });
     cy.createTask({
       title: "Task C",
       description: "Task C description",
-      status: "not started",
+      status: "completed",
       priority: "medium",
     });
     // confirm there are 3 tasks
@@ -39,5 +39,26 @@ describe("Sort tasks", () => {
     cy.get(selectors.ListView.taskTitleHeader).should("have.text", "Title ↑");
     // confirm the task titles are sorted alphabetically in reverse
     cy.get(selectors.ListView.taskTitle).should("read", ["Task A", "Task B", "Task C"]);
+  });
+
+  it("sorts by task status", () => {
+    // click on the status column
+    cy.get(selectors.ListView.taskStatusHeader).click();
+    cy.get(selectors.ListView.taskStatusHeader).should("have.text", "Status ↓");
+    // confirm the task statuses are sorted alphabetically
+    cy.get(selectors.ListView.taskStatus).should("read", [
+      "not started",
+      "in progress",
+      "completed",
+    ]);
+    // click the status column again
+    cy.get(selectors.ListView.taskStatusHeader).click();
+    cy.get(selectors.ListView.taskStatusHeader).should("have.text", "Status ↑");
+    // confirm the task statuses are sorted alphabetically in reverse
+    cy.get(selectors.ListView.taskStatus).should("read", [
+      "completed",
+      "in progress",
+      "not started",
+    ]);
   });
 });

@@ -7,6 +7,7 @@ export const selectors = {
     taskTitleHeader: '[data-cy="task-title-header"]',
     taskDescription: '[data-cy="task-description"]',
     taskStatus: '[data-cy="task-status"]',
+    taskStatusHeader: '[data-cy="task-status-header"]',
     taskPriority: '[data-cy="task-priority"]',
     zeroTasks: '[data-cy="zero-tasks"]',
     selectAllCheckbox: '[data-cy="select-all"]',
