@@ -66,12 +66,12 @@ describe("Sort tasks", () => {
     // click on the priority column
     cy.get(selectors.ListView.taskPriorityHeader).click();
     cy.get(selectors.ListView.taskPriorityHeader).should("have.text", "Priority ↓");
-    // confirm the task priorities are sorted alphabetically
+    // confirm the task priorities are sorted by priority
     cy.get(selectors.ListView.taskPriority).should("read", ["high", "medium", "low"]);
     // click the priority column again
     cy.get(selectors.ListView.taskPriorityHeader).click();
     cy.get(selectors.ListView.taskPriorityHeader).should("have.text", "Priority ↑");
-    // confirm the task priorities are sorted alphabetically in reverse
+    // confirm the task priorities are sorted by priority in reverse
     cy.get(selectors.ListView.taskPriority).should("read", ["low", "medium", "high"]);
   });
 });
