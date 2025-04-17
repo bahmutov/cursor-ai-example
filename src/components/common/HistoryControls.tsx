@@ -1,33 +1,33 @@
-import React from "react"
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { ActionCreators } from "redux-undo"
+import React from "react";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { ActionCreators } from "redux-undo";
 
 const HistoryControls: React.FC = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   // Access the undo/redo state directly from redux-undo
-  const canUndo = useAppSelector(state => state.tasks.past.length > 0)
-  const canRedo = useAppSelector(state => state.tasks.future.length > 0)
+  const canUndo = useAppSelector(state => state.tasks.past.length > 0);
+  const canRedo = useAppSelector(state => state.tasks.future.length > 0);
 
   // Get counts for debugging and tooltips
-  const pastCount = useAppSelector(state => state.tasks.past.length)
-  const futureCount = useAppSelector(state => state.tasks.future.length)
+  const pastCount = useAppSelector(state => state.tasks.past.length);
+  const futureCount = useAppSelector(state => state.tasks.future.length);
 
   // console.log({ canUndo, canRedo })
 
   // Handle undo action
   const handleUndo = () => {
     if (canUndo) {
-      dispatch(ActionCreators.undo())
+      dispatch(ActionCreators.undo());
     }
-  }
+  };
 
   // Handle redo action
   const handleRedo = () => {
     if (canRedo) {
-      dispatch(ActionCreators.redo())
+      dispatch(ActionCreators.redo());
     }
-  }
+  };
 
   return (
     <div className="flex items-center space-x-2" data-cy="undo-redo">
@@ -41,7 +41,7 @@ const HistoryControls: React.FC = () => {
             : "bg-gray-50 text-gray-400 cursor-not-allowed"
         }`}
         title={`Undo (${pastCount} states in history)`}
-        data-testid="undo-button"
+        data-cy="undo-button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ const HistoryControls: React.FC = () => {
             : "bg-gray-50 text-gray-400 cursor-not-allowed"
         }`}
         title={`Redo (${futureCount} states in future)`}
-        data-testid="redo-button"
+        data-cy="redo-button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@ const HistoryControls: React.FC = () => {
         </svg>
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default HistoryControls
+export default HistoryControls;
