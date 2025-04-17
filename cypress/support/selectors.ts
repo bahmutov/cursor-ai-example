@@ -9,6 +9,7 @@ export const selectors = {
     taskStatus: '[data-cy="task-status"]',
     taskStatusHeader: '[data-cy="task-status-header"]',
     taskPriority: '[data-cy="task-priority"]',
+    taskPriorityHeader: '[data-cy="task-priority-header"]',
     zeroTasks: '[data-cy="zero-tasks"]',
     selectAllCheckbox: '[data-cy="select-all"]',
     deleteButton: '[data-cy="delete-selected-button"]',

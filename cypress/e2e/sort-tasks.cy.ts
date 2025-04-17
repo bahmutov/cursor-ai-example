@@ -61,4 +61,17 @@ describe("Sort tasks", () => {
       "not started",
     ]);
   });
+
+  it("sorts by task priority", () => {
+    // click on the priority column
+    cy.get(selectors.ListView.taskPriorityHeader).click();
+    cy.get(selectors.ListView.taskPriorityHeader).should("have.text", "Priority ↓");
+    // confirm the task priorities are sorted alphabetically
+    cy.get(selectors.ListView.taskPriority).should("read", ["medium", "medium", "medium"]);
+    // click the priority column again
+    cy.get(selectors.ListView.taskPriorityHeader).click();
+    cy.get(selectors.ListView.taskPriorityHeader).should("have.text", "Priority ↑");
+    // confirm the task priorities are sorted alphabetically in reverse
+    cy.get(selectors.ListView.taskPriority).should("read", ["medium", "medium", "medium"]);
+  });
 });
