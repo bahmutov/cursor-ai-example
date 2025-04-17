@@ -53,6 +53,18 @@ const ListView: React.FC = () => {
         return multiplier * (new Date(a[field]).getTime() - new Date(b[field]).getTime());
       }
 
+      // Handle priority field
+      if (field === "priority") {
+        const priorityOrder = {
+          urgent: 4,
+          high: 3,
+          medium: 2,
+          low: 1,
+          none: 0,
+        };
+        return multiplier * (priorityOrder[a.priority] - priorityOrder[b.priority]);
+      }
+
       // Handle string fields
       if (typeof a[field] === "string" && typeof b[field] === "string") {
         return multiplier * a[field].localeCompare(b[field] as string);
