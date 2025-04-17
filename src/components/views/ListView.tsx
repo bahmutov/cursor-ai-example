@@ -251,7 +251,7 @@ const ListView: React.FC = () => {
           </thead>
           <tbody className="bg-white divide-y divide-gray-200" data-cy="tasks">
             {paginatedTasks.map(task => (
-              <tr key={task.id} data-cy="task-row">
+              <tr key={task.id} className="hover:bg-gray-50" data-cy="task-row">
                 <td className="px-3 py-4 whitespace-nowrap">
                   <input
                     type="checkbox"
