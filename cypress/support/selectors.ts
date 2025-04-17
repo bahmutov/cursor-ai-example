@@ -4,6 +4,7 @@ export const selectors = {
     taskRow: '[data-cy="task-row"]',
     searchInput: '[data-cy="search-input"]',
     taskTitle: '[data-cy="task-title"]',
+    taskTitleHeader: '[data-cy="task-title-header"]',
     taskDescription: '[data-cy="task-description"]',
     taskStatus: '[data-cy="task-status"]',
     taskPriority: '[data-cy="task-priority"]',
