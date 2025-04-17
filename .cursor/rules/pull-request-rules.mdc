@@ -1,0 +1,17 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Pull request rule
+
+VERY IMPORTANT: always make a new branch for each feature.
+
+## Git rules
+
+- use the command `git branch --show-current` to find the current branch name
+- always use GitHub CLI "gh" to create branches and pull requests using `gh pr create <pr name> --base <the current branch name>`
+- always follow semantic commit convention when naming commits
+- finish the feature by adding a commit
+- open a GitHub pull request between the current branch and its base / parent branch
