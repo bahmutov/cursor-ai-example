@@ -7,7 +7,7 @@ describe("Tasks", () => {
 
     validPriorities.forEach(priority => {
       const title = `Test task with ${priority} priority`;
-      cy.get('[data-cy="create-task-button"]').click();
+      cy.get('[data-cy="add-task-button"]').click();
       cy.get('[data-cy="title-input"]').type(title);
       cy.get('[data-cy="priority-select"]').select(priority);
       cy.get('[data-cy="submit-task-button"]').click();
