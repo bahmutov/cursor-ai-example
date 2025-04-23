@@ -1,10 +1,21 @@
-import { defineConfig } from "vite"
-import react from "@vitejs/plugin-react"
-import tailwindcss from "@tailwindcss/vite"
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import istanbul from "vite-plugin-istanbul";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    istanbul({
+      include: "src/*",
+      exclude: ["node_modules", "cypress/**/*.cy.*"],
+      extension: [".js", ".ts", ".tsx"],
+      requireEnv: false,
+      cypress: true,
+    }),
+  ],
   build: {
     sourcemap: true,
   },
@@ -16,4 +27,4 @@ export default defineConfig({
       ignored: ["node_modules", "cypress", "cypress/**/*.cy.*", "coverage"],
     },
   },
-})
+});
