@@ -12,6 +12,8 @@ export const selectors = {
     taskPriorityHeader: '[data-cy="task-priority-header"]',
     zeroTasks: '[data-cy="zero-tasks"]',
     selectAllCheckbox: '[data-cy="select-all"]',
+    selectTask: '[data-cy="select-task"]',
+    selectedTasks: '[data-cy="selected-tasks"]',
     deleteButton: '[data-cy="delete-selected-button"]',
     editButton: '[data-cy="edit-task-button"]',
   },
