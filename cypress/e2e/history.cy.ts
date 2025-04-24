@@ -11,5 +11,9 @@ describe("Undo / Redo History", () => {
       priority: "high",
     });
     cy.get(selectors.ListView.taskRow).should("have.length", 1);
+    // click the undo button
+    // confirm there are no tasks
+    // click the redo button
+    // confirm the one task is back
   });
 });
