@@ -12,8 +12,12 @@ describe("Undo / Redo History", () => {
     });
     cy.get(selectors.ListView.taskRow).should("have.length", 1);
     // click the undo button
+    cy.get(selectors.HistoryControls.undoButton).click();
     // confirm there are no tasks
+    cy.get(selectors.ListView.zeroTasks).should("be.visible");
     // click the redo button
+    cy.get(selectors.HistoryControls.redoButton).click();
     // confirm the one task is back
+    cy.get(selectors.ListView.taskRow).should("have.length", 1);
   });
 });

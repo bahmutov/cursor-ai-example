@@ -40,4 +40,8 @@ export const selectors = {
   DeleteTaskButton: {
     button: '[data-cy="delete-task-button"]',
   },
+  HistoryControls: {
+    undoButton: '[data-cy="undo-button"]',
+    redoButton: '[data-cy="redo-button"]',
+  },
 } as const;
