@@ -33,6 +33,7 @@ export const selectors = {
     statusSelect: '[data-cy="status-select"]',
     prioritySelect: '[data-cy="priority-select"]',
     submitButton: '[data-cy="submit-task-button"]',
+    toggleCustomFields: '[data-cy="toggle-custom-fields"]',
   },
   CreateTaskButton: {
     button: '[data-cy="create-task-button"]',
