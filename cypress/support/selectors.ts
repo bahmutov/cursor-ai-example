@@ -33,6 +33,11 @@ export const selectors = {
     statusSelect: '[data-cy="status-select"]',
     prioritySelect: '[data-cy="priority-select"]',
     submitButton: '[data-cy="submit-task-button"]',
+    toggleCustomFields: '[data-cy="toggle-custom-fields"]',
+    customFields: '[data-cy="custom-fields"]',
+    newCustomFieldName: '[data-cy="new-custom-field-name"]',
+    newCustomFieldValue: '[data-cy="new-custom-field-value"]',
+    addNewCustomField: '[data-cy="add-new-custom-field"]',
   },
   CreateTaskButton: {
     button: '[data-cy="create-task-button"]',
